@@ -1003,7 +1003,7 @@ label arenafinal:
     jump arenafinal2
 
 label arenafinal3:
-    "You lost"
+    "You lost the game."
     $ defeat = True
     jump arenafinal2
 
