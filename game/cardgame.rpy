@@ -992,7 +992,7 @@ label arenafinal:
 
     elif mp > pp:
         $ defeat = True
-        "You lose. Try again."
+        "You lose the game. Try again."
         pause 1.0
 
     elif mp == pp:
