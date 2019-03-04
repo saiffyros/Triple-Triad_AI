@@ -1,0 +1,36 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 17, in script call
+    call cardgame1
+  File "game/cardgame.rpy", line 813, in script
+    
+  File "game/cardgame.rpy", line 850, in <module>
+    c5 = enemies
+  File "game/cardgame.rpy", line 509, in enemy_turn2
+    luck = random.randint(0, (len(enemy_deck)-1))
+ValueError: empty range for randrange() (0,0, 0)
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 17, in script call
+    call cardgame1
+  File "game/cardgame.rpy", line 813, in script
+    
+  File "C:\Users\rodri\Desktop\renpy-7.0.0-sdk\renpy\ast.py", line 862, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\rodri\Desktop\renpy-7.0.0-sdk\renpy\python.py", line 1912, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/cardgame.rpy", line 850, in <module>
+    c5 = enemies
+  File "game/cardgame.rpy", line 509, in enemy_turn2
+    luck = random.randint(0, (len(enemy_deck)-1))
+  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/random.py", line 242, in randint
+  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/random.py", line 218, in randrange
+ValueError: empty range for randrange() (0,0, 0)
+
+Windows-8-6.2.9200
+Ren'Py 7.0.0.196
+Triple Triad 1.0
+Sat Oct 13 17:54:56 2018
