@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/cardgame.rpy", line 1069: u'if' is not a keyword argument or valid child for the textbutton statement.
-    textbutton _("Done") action Jump("cardgamei2") xpadding 20 ypadding 30 if len(deck) == 5
-                                                                             ^
+File "game/cardgame.rpy", line 990: expected end of line
+    stop music "menu_song.mp3"
+               ^
 
-Ren'Py Version: Ren'Py 7.1.1.929
-Sat Oct 13 22:22:40 2018
+Ren'Py Version: Ren'Py 7.3.0.271
+Wed Jun 26 16:58:46 2019

@@ -201,11 +201,11 @@ init python:
             if self.owner == 1:
                 self.owner = 2
                 mp += 1
-                renpy.play("flipping.wav")
+                renpy.play("flipping.mp3")
             elif self.owner == 2:
                 self.owner = 1
                 pp += 1
-                renpy.play("flipping.wav")
+                renpy.play("flipping.mp3")
 
 
         def pick_neighbours(self):
@@ -987,6 +987,10 @@ label arenafinal:
 
     if pp > mp:
         $ victory = True
+        stop music
+        play sound "victory.mp3"
+        pause 3.0
+        play music "menu_song.mp3" fadeout 1.0
         "You win!"
         pause 1.0
 
