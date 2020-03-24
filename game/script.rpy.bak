@@ -14,7 +14,7 @@ label start:
     else:
         $ enemy_deck = [lava_hound2, archers2, mega_knight2, barbarians2, mosquetear2]
 
-    call cardgame1 from _call_cardgame1
+    call cardgame1
 
     jump computer2
 

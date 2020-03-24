@@ -987,10 +987,6 @@ label arenafinal:
 
     if pp > mp:
         $ victory = True
-        stop music
-        play sound "victory.mp3"
-        pause 3.0
-        play music "menu_song.mp3" fadeout 1.0
         "You win!"
         pause 1.0
 
