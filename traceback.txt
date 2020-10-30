@@ -3,50 +3,28 @@
 While running game code:
   File "game/script.rpy", line 17, in script call
     call cardgame1 from _call_cardgame1
-  File "game/cardgame.rpy", line 619, in script
-    call screen deck
-  File "renpy/common/000statements.rpy", line 531, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-IOError: Couldn't find file 'flipping.wav'.
+  File "game/cardgame.rpy", line 657, in script
+    python:
+  File "game/cardgame.rpy", line 660, in <module>
+    board[_return - 1].append(allies[0])
+TypeError: unsupported operand type(s) for -: 'list' and 'int'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "game/script.rpy", line 17, in script call
     call cardgame1 from _call_cardgame1
-  File "game/cardgame.rpy", line 619, in script
-    call screen deck
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\ast.py", line 1949, in execute
-    self.call("execute")
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\ast.py", line 1937, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\statements.py", line 277, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 531, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\exports.py", line 2905, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\ui.py", line 297, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\display\core.py", line 2702, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\display\core.py", line 3380, in interact_core
-    renpy.audio.audio.periodic()
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\audio\audio.py", line 1060, in periodic
-    six.reraise(exc[0], exc[1], exc[2])
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\audio\audio.py", line 1038, in periodic_thread_main
-    periodic_pass()
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\audio\audio.py", line 979, in periodic_pass
-    c.periodic()
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\audio\audio.py", line 457, in periodic
-    topf = load(self.file_prefix + filename + self.file_suffix)
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\audio\audio.py", line 73, in load
-    rv = renpy.loader.load(fn)
-  File "C:\Users\rodri\Desktop\renpy-7.2.2-sdk\renpy\loader.py", line 576, in load
-    raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'flipping.wav'.
+  File "game/cardgame.rpy", line 657, in script
+    python:
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/cardgame.rpy", line 660, in <module>
+    board[_return - 1].append(allies[0])
+TypeError: unsupported operand type(s) for -: 'list' and 'int'
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Triple Triad 1.0
-Mon Mar 23 23:18:36 2020
+Thu Oct 29 23:58:36 2020

@@ -7,6 +7,22 @@ init python:
 
     import random
 
+    def checkCardToBattle(list, listEnemies):
+        if list:
+            if list[0] == listEnemies[0]:
+                list[0].battle_cards1()
+
+    def setBackground(list, posx, posy, returnAction):
+
+        if list:
+            card = list[0]
+            if card.owner == 1:
+                ui.add(card.picture, xpos = posx, ypos = posy)
+            else:
+                ui.add(card.picture2, xpos = posx, ypos = posy)
+        else:
+            ui.imagebutton("img99.png", xpos = posx, ypos = posy, clicked = ui.returns(returnAction))
+
     class card(object):
         def __init__(self, name, picture, picture2, top, bottom, left, right, position, owner):
             self.name = name
@@ -18,6 +34,8 @@ init python:
             self.right = right
             self.position = position
             self.owner = owner
+
+
 
         def artificial(self):
             global number
@@ -77,6 +95,11 @@ init python:
 
                 if number == 9:
                     return
+
+        #def battleBottom(self):
+            #if neighbours:
+                #if self.get_bottom() > i.get_top():
+                    #i.change_owner()
 
         def battle_cards1(self):
             global neighbours
@@ -567,6 +590,8 @@ label cardgame1:
     $ b7 = []
     $ b8 = []
     $ b9 = []
+
+    $ board = [b1, b2, b3, b4, b5, b6, b7, b8, b9]
     $ deck = []
     $ victory = None
     $ defeat = None
@@ -631,78 +656,12 @@ label arena1:
 
     python:
     # give the card the position, owner and get the neighbours
-        if _return == "first1":
-            b1.append(allies[0])
-            for i in b1:
-                for e in allies:
-                    if i is e:
-                        i.owner = 1
-                        i.position = 1
-                        i.pick_neighbours()
-        if _return == "second":
-            b2.append(allies[0])
-            for i in b2:
-                for e in allies:
-                    if i is e:
-                        i.owner = 1
-                        i.position = 2
-                        i.pick_neighbours()
-        if _return == "third":
-            b3.append(allies[0])
-            for i in b3:
-                for e in allies:
-                    if i is e:
-                        i.owner = 1
-                        i.position = 3
-                        i.pick_neighbours()
-        if _return == "fourth":
-            b4.append(allies[0])
-            for i in b4:
-                for e in allies:
-                    if i is e:
-                        i.owner = 1
-                        i.position = 4
-                        i.pick_neighbours()
-        if _return == "fifth":
-            b5.append(allies[0])
-            for i in b5:
-                for e in allies:
-                    if i is e:
-                        i.owner = 1
-                        i.position = 5
-                        i.pick_neighbours()
-        if _return == "sixth":
-            b6.append(allies[0])
-            for i in b6:
-                for e in allies:
-                    if i is e:
-                        i.owner = 1
-                        i.position = 6
-                        i.pick_neighbours()
-        if _return == "seventh":
-            b7.append(allies[0])
-            for i in b7:
-                for e in allies:
-                    if i is e:
-                        i.owner = 1
-                        i.position = 7
-                        i.pick_neighbours()
-        if _return == "eighth":
-            b8.append(allies[0])
-            for i in b8:
-                for e in allies:
-                    if i is e:
-                        i.owner = 1
-                        i.position = 8
-                        i.pick_neighbours()
-        if _return == "ninth":
-            b9.append(allies[0])
-            for i in b9:
-                for e in allies:
-                    if i is e:
-                        i.owner = 1
-                        i.position = 9
-                        i.pick_neighbours()
+        x = _return
+        board[x - 1].append(allies[0])
+        board[x - 1][0].owner = 1
+        board[x - 1][0].position = _return
+        board[x - 1][0].pick_neighbours()
+
     jump arena2
 
 label arena2:
@@ -810,7 +769,6 @@ label arena7:
     while len(enemies) == 0:
         $ test = random.randint(1, 9)
 
-        python:
             if test == 1:
                 if not b1:
                     c5 = enemies
@@ -918,11 +876,8 @@ label arena7:
 label arena8:
 
     python:
-        if b1:
-            for i in b1:
-                for e in enemies:
-                    if i is e:
-                        i.battle_cards1()
+        checkCardToBattle(b1, enemies)
+
         if b2:
             for i in b2:
                 for e in enemies:
@@ -1071,107 +1026,16 @@ screen deck_choose:
 
 screen cards_table:
 
-    if b1:
-        for i in b1:
-            if i.owner == 1:
-                add [i.picture]:
-                    xpos 350
-                    ypos 70
-            if i.owner == 2:
-                add [i.picture2]:
-                    xpos 350
-                    ypos 70
-
-    #if not second:
-        #if not second_m:
-            #pass
-    if b2:
-        for i in b2:
-            if i.owner == 1:
-                add [i.picture]:
-                    xpos 510
-                    ypos 70
-            if i.owner == 2:
-                add [i.picture2]:
-                    xpos 510
-                    ypos 70
-
-    if b3:
-        for i in b3:
-            if i.owner == 1:
-                add [i.picture]:
-                    xpos 670
-                    ypos 70
-            if i.owner == 2:
-                add [i.picture2]:
-                    xpos 670
-                    ypos 70
-
-    if b4:
-        for i in b4:
-            if i.owner == 1:
-                add [i.picture]:
-                    xpos 350
-                    ypos 290
-            if i.owner == 2:
-                add [i.picture2]:
-                    xpos 350
-                    ypos 290
-
-    if b5:
-        for i in b5:
-            if i.owner == 1:
-                add [i.picture]:
-                    xpos 510
-                    ypos 290
-            if i.owner == 2:
-                add [i.picture2]:
-                    xpos 510
-                    ypos 290
-
-    if b6:
-        for i in b6:
-            if i.owner == 1:
-                add [i.picture]:
-                    xpos 670
-                    ypos 290
-            if i.owner == 2:
-                add [i.picture2]:
-                    xpos 670
-                    ypos 290
-
-    if b7:
-        for i in b7:
-            if i.owner == 1:
-                add [i.picture]:
-                    xpos 350
-                    ypos 520
-            if i.owner == 2:
-                add [i.picture2]:
-                    xpos 350
-                    ypos 520
-
-    if b8:
-        for i in b8:
-            if i.owner == 1:
-                add [i.picture]:
-                    xpos 510
-                    ypos 520
-            if i.owner == 2:
-                add [i.picture2]:
-                    xpos 510
-                    ypos 520
-
-    if b9:
-        for i in b9:
-            if i.owner == 1:
-                add [i.picture]:
-                    xpos 670
-                    ypos 520
-            if i.owner == 2:
-                add [i.picture2]:
-                    xpos 670
-                    ypos 520
+    python:
+        setBackground(b1, 350, 70, "")
+        setBackground(b2, 510, 70, "")
+        setBackground(b3, 670, 70, "")
+        setBackground(b4, 350, 290, "")
+        setBackground(b5, 510, 290, "")
+        setBackground(b6, 670, 290, "")
+        setBackground(b7, 350, 520, "")
+        setBackground(b8, 510, 520, "")
+        setBackground(b9, 670, 520, "")
 
 screen points:
     text "Player \n [pp]":
@@ -1204,21 +1068,13 @@ screen arena:
         frame:
             textbutton _("Return") action Hide("arena"), RemoveFromSet(allies, i), Jump("arena") xpadding 20 ypadding 30
 
-    if not b1:
-            imagebutton idle "img99.png" hover (im.MatrixColor("img99.png", im.matrix.brightness(0.25))) xpos 350 ypos 70 action Play("sound", "click.ogg"), Return("first1")
-    if not b2:
-            imagebutton idle "img99.png" hover (im.MatrixColor("img99.png", im.matrix.brightness(0.25))) xpos 510 ypos 70 action Play("sound", "click.ogg"), Return("second")
-    if not b3:
-            imagebutton idle "img99.png" hover (im.MatrixColor("img99.png", im.matrix.brightness(0.25))) xpos 670 ypos 70 action Play("sound", "click.ogg"), Return("third")
-    if not b4:
-            imagebutton idle "img99.png" hover (im.MatrixColor("img99.png", im.matrix.brightness(0.25))) xpos 350 ypos 290 action Play("sound", "click.ogg"), Return("fourth")
-    if not b5:
-            imagebutton idle "img99.png" hover (im.MatrixColor("img99.png", im.matrix.brightness(0.25))) xpos 510 ypos 290 action Play("sound", "click.ogg"), Return("fifth")
-    if not b6:
-            imagebutton idle "img99.png" hover (im.MatrixColor("img99.png", im.matrix.brightness(0.25))) xpos 670 ypos 290 action Play("sound", "click.ogg"), Return("sixth")
-    if not b7:
-            imagebutton idle "img99.png" hover (im.MatrixColor("img99.png", im.matrix.brightness(0.25))) xpos 350 ypos 520 action Play("sound", "click.ogg"), Return("seventh")
-    if not b8:
-            imagebutton idle "img99.png" hover (im.MatrixColor("img99.png", im.matrix.brightness(0.25))) xpos 510 ypos 520 action Play("sound", "click.ogg"), Return("eighth")
-    if not b9:
-            imagebutton idle "img99.png" hover (im.MatrixColor("img99.png", im.matrix.brightness(0.25))) xpos 670 ypos 520 action Play("sound", "click.ogg"), Return("ninth")
+    python:
+        setBackground(b1, 350, 70, 1)
+        setBackground(b2, 510, 70, 2)
+        setBackground(b3, 670, 70, 3)
+        setBackground(b4, 350, 290, 4)
+        setBackground(b5, 510, 290, 5)
+        setBackground(b6, 670, 290, 6)
+        setBackground(b7, 350, 520, 7)
+        setBackground(b8, 510, 520, 8)
+        setBackground(b9, 670, 520, 9)

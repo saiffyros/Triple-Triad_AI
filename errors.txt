@@ -2,9 +2,29 @@
 errors listed below, and try again.
 
 
-File "game/cardgame.rpy", line 990: expected end of line
-    stop music "menu_song.mp3"
-               ^
+File "game/cardgame.rpy", line 653: python block expects a non-empty block.
+    python:
+           ^
 
-Ren'Py Version: Ren'Py 7.3.0.271
-Wed Jun 26 16:58:46 2019
+File "game/cardgame.rpy", line 656: expected statement.
+    _return = renpy.get_return_stack()
+            ^
+
+File "game/cardgame.rpy", line 657: expected statement.
+    board[_return - 1].append(allies[0])
+                                        ^
+
+File "game/cardgame.rpy", line 658: expected statement.
+    board[_return - 1][0].owner = 1
+                                ^
+
+File "game/cardgame.rpy", line 659: expected statement.
+    board[_return - 1][0].position = _return
+                                   ^
+
+File "game/cardgame.rpy", line 660: expected statement.
+    board[_return - 1][0].pick_neighbours()
+                                           ^
+
+Ren'Py Version: Ren'Py 7.3.5.606
+Thu Oct 29 23:55:37 2020
