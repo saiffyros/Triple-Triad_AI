@@ -2,29 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/cardgame.rpy", line 653: python block expects a non-empty block.
-    python:
-           ^
-
-File "game/cardgame.rpy", line 656: expected statement.
-    _return = renpy.get_return_stack()
-            ^
-
-File "game/cardgame.rpy", line 657: expected statement.
-    board[_return - 1].append(allies[0])
-                                        ^
-
-File "game/cardgame.rpy", line 658: expected statement.
-    board[_return - 1][0].owner = 1
-                                ^
-
-File "game/cardgame.rpy", line 659: expected statement.
-    board[_return - 1][0].position = _return
-                                   ^
-
-File "game/cardgame.rpy", line 660: expected statement.
-    board[_return - 1][0].pick_neighbours()
-                                           ^
+File "game/cardgame.rpy", line 772: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
+    if test == 1:
+    ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Thu Oct 29 23:55:37 2020
+Fri Oct 30 00:04:53 2020

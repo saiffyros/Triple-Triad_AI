@@ -769,6 +769,7 @@ label arena7:
     while len(enemies) == 0:
         $ test = random.randint(1, 9)
 
+        python:
             if test == 1:
                 if not b1:
                     c5 = enemies
