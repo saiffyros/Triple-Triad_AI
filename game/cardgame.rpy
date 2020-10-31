@@ -7,6 +7,25 @@ init python:
 
     import random
 
+    def PickCardBattleAllies(list, listAllies):
+        if list:
+            for i in list:
+                for e in listAllies:
+                    if i is e:
+                        return True
+                    else:
+                        return False
+
+    def pickRandomCard(list, enemiesList, testNumber):
+        if not list:
+            enemy_turn2(list, enemiesList)
+            for i in list:
+                for e in enemiesList:
+                    if i is e:
+                        i.owner = 2
+                        i.position = testNumber
+                        i.pick_neighbours()
+
     def checkCardToBattle(list, listEnemies):
         if list:
             if list[0] == listEnemies[0]:
@@ -34,8 +53,6 @@ init python:
             self.right = right
             self.position = position
             self.owner = owner
-
-
 
         def artificial(self):
             global number
@@ -95,11 +112,6 @@ init python:
 
                 if number == 9:
                     return
-
-        #def battleBottom(self):
-            #if neighbours:
-                #if self.get_bottom() > i.get_top():
-                    #i.change_owner()
 
         def battle_cards1(self):
             global neighbours
@@ -230,7 +242,6 @@ init python:
                 pp += 1
                 renpy.play("flipping.mp3")
 
-
         def pick_neighbours(self):
             if self.position == 1:
                 if b2:
@@ -299,7 +310,6 @@ init python:
                     neighbours.append(b8[0])
 
             return neighbours
-
 
         def battle_cardsa1(self):
             global neighbours
@@ -682,51 +692,33 @@ label arena2:
 label arena4:
 
     python:
-        if b1:
-            for i in b1:
-                for e in allies:
-                    if i is e:
-                        i.battle_cards1()
-        if b2:
-            for i in b2:
-                for e in allies:
-                    if i is e:
-                        i.battle_cards2()
-        if b3:
-            for i in b3:
-                for e in allies:
-                    if i is e:
-                        i.battle_cards3()
-        if b4:
-            for i in b4:
-                for e in allies:
-                    if i is e:
-                        i.battle_cards4()
-        if b5:
-            for i in b5:
-                for e in allies:
-                    if i is e:
-                        i.battle_cards5()
-        if b6:
-            for i in b6:
-                for e in allies:
-                    if i is e:
-                        i.battle_cards6()
-        if b7:
-            for i in b7:
-                for e in allies:
-                    if i is e:
-                        i.battle_cards7()
-        if b8:
-            for i in b8:
-                for e in allies:
-                    if i is e:
-                        i.battle_cards8()
-        if b9:
-            for i in b9:
-                for e in allies:
-                    if i is e:
-                        i.battle_cards9()
+
+        if (PickCardBattleAllies(b1, allies)):
+            b1[0].battle_cards1()
+
+        if (PickCardBattleAllies(b2, allies)):
+            b2[0].battle_cards2()
+
+        if (PickCardBattleAllies(b3, allies)):
+            b3[0].battle_cards3()
+
+        if (PickCardBattleAllies(b4, allies)):
+            b4[0].battle_cards4()
+
+        if (PickCardBattleAllies(b5, allies)):
+            b5[0].battle_cards5()
+
+        if (PickCardBattleAllies(b6, allies)):
+            b6[0].battle_cards6()
+
+        if (PickCardBattleAllies(b7, allies)):
+            b7[0].battle_cards7()
+
+        if (PickCardBattleAllies(b8, allies)):
+            b8[0].battle_cards8()
+
+        if (PickCardBattleAllies(b9, allies)):
+            b9[0].battle_cards9()
 
     jump arena5
 
@@ -770,104 +762,33 @@ label arena7:
         $ test = random.randint(1, 9)
 
         python:
+
             if test == 1:
-                if not b1:
-                    c5 = enemies
-                    enemy_turn2(b1, c5)
-                    for i in b1:
-                        for e in enemies:
-                            if i is e:
-                                i.owner = 2
-                                i.position = 1
-                                i.pick_neighbours()
+                pickRandomCard(b1, enemies, test)
 
             if test == 2:
-                if not b2:
-                    c5 = enemies
-                    enemy_turn2(b2, c5)
-                    for i in b2:
-                        for e in enemies:
-                            if i is e:
-                                i.owner = 2
-                                i.position = 2
-                                i.pick_neighbours()
+                pickRandomCard(b2, enemies, test)
 
             if test == 3:
-                if not b3:
-                    c5 = enemies
-                    enemy_turn2(b3, c5)
-                    for i in b3:
-                        for e in enemies:
-                            if i is e:
-                                i.owner = 2
-                                i.position = 3
-                                i.pick_neighbours()
+                pickRandomCard(b3, enemies, test)
 
             if test == 4:
-                if not b4:
-                    c5 = enemies
-                    enemy_turn2(b4, c5)
-                    for i in b4:
-                        for e in enemies:
-                            if i is e:
-                                i.owner = 2
-                                i.position = 4
-                                i.pick_neighbours()
+                pickRandomCard(b4, enemies, test)
 
             if test == 5:
-                if not b5:
-                    c5 = enemies
-                    enemy_turn2(b5, c5)
-                    for i in b5:
-                        for e in enemies:
-                            if i is e:
-                                i.owner = 2
-                                i.position = 5
-                                i.pick_neighbours()
+                pickRandomCard(b5, enemies, test)
 
             if test == 6:
-                if not b6:
-                    c5 = enemies
-                    enemy_turn2(b6, c5)
-                    for i in b6:
-                        for e in enemies:
-                            if i is e:
-                                i.owner = 2
-                                i.position = 6
-                                i.pick_neighbours()
+                pickRandomCard(b6, enemies, test)
 
             if test == 7:
-                if not b7:
-                    c5 = enemies
-                    enemy_turn2(b7, c5)
-                    for i in b7:
-                        for e in enemies:
-                            if i is e:
-                                i.owner = 2
-                                i.position = 7
-                                i.pick_neighbours()
+                pickRandomCard(b7, enemies, test)
 
             if test == 8:
-                if not b8:
-                    c5 = enemies
-                    enemy_turn2(b8, c5)
-                    for i in b8:
-                        for e in enemies:
-                            if i is e:
-                                i.owner = 2
-                                i.position = 8
-                                i.pick_neighbours()
+                pickRandomCard(b8, enemies, test)
 
             if test == 9:
-                if not b9:
-                    c5 = enemies
-                    enemy_turn2(b9, c5)
-                    for i in b9:
-                        for e in enemies:
-                            if i is e:
-                                i.owner = 2
-                                i.position = 9
-                                i.pick_neighbours()
+                pickRandomCard(b9, enemies, test)
 
     if enemies:
         $ turn += 1
