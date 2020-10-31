@@ -3,28 +3,28 @@
 While running game code:
   File "game/script.rpy", line 17, in script call
     call cardgame1 from _call_cardgame1
-  File "game/cardgame.rpy", line 657, in script
+  File "game/cardgame.rpy", line 879, in script
     python:
-  File "game/cardgame.rpy", line 660, in <module>
-    board[_return - 1].append(allies[0])
-TypeError: unsupported operand type(s) for -: 'list' and 'int'
+  File "game/cardgame.rpy", line 902, in <module>
+    b8.battle_cards8()
+AttributeError: 'RevertableList' object has no attribute 'battle_cards8'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "game/script.rpy", line 17, in script call
     call cardgame1 from _call_cardgame1
-  File "game/cardgame.rpy", line 657, in script
+  File "game/cardgame.rpy", line 879, in script
     python:
   File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
     exec bytecode in globals, locals
-  File "game/cardgame.rpy", line 660, in <module>
-    board[_return - 1].append(allies[0])
-TypeError: unsupported operand type(s) for -: 'list' and 'int'
+  File "game/cardgame.rpy", line 902, in <module>
+    b8.battle_cards8()
+AttributeError: 'RevertableList' object has no attribute 'battle_cards8'
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Triple Triad 1.0
-Thu Oct 29 23:58:36 2020
+Sat Oct 31 20:06:02 2020

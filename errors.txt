@@ -7,4 +7,4 @@ File "game/cardgame.rpy", line 772: Line is indented, but the preceding one-line
     ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Fri Oct 30 00:04:53 2020
+Fri Oct 30 00:32:37 2020

@@ -10,7 +10,7 @@ init python:
     def checkCardToBattle(list, listEnemies):
         if list:
             if list[0] == listEnemies[0]:
-                list[0].battle_cards1()
+                return True
 
     def setBackground(list, posx, posy, returnAction):
 
@@ -877,53 +877,32 @@ label arena7:
 label arena8:
 
     python:
-        checkCardToBattle(b1, enemies)
+        if (checkCardToBattle(b1, enemies)):
+            b1[0].battle_cards1()
 
-        if b2:
-            for i in b2:
-                for e in enemies:
-                    if i is e:
-                        i.battle_cards2()
-        if b3:
-            for i in b3:
-                for e in enemies:
-                    if i is e:
-                        i.battle_cards3()
-        if b4:
-            for i in b4:
-                for e in enemies:
-                    if i is e:
-                        i.battle_cards4()
-        if b5:
-            for i in b5:
-                for e in enemies:
-                    if i is e:
-                        i.battle_cards5()
-        if b6:
-            for i in b6:
-                for e in enemies:
-                    if i is e:
-                        i.battle_cards6()
-        if b7:
-            for i in b7:
-                for e in enemies:
-                    if i is e:
-                        i.battle_cards7()
-        if b8:
-            for i in b8:
-                for e in enemies:
-                    if i is e:
-                        i.battle_cards8()
-        if b9:
-            for i in b9:
-                for e in enemies:
-                    if i is e:
-                        i.battle_cards9()
+        if (checkCardToBattle(b2, enemies)):
+            b2[0].battle_cards2()
 
-        for i in enemies:
-            for e in enemy_deck:
-                if i is e:
-                    enemy_deck.remove(i)
+        if (checkCardToBattle(b3, enemies)):
+            b3[0].battle_cards3()
+
+        if (checkCardToBattle(b4, enemies)):
+            b4[0].battle_cards4()
+
+        if (checkCardToBattle(b5, enemies)):
+            b5[0].battle_cards5()
+
+        if (checkCardToBattle(b6, enemies)):
+            b6[0].battle_cards6()
+
+        if (checkCardToBattle(b7, enemies)):
+            b7[0].battle_cards7()
+
+        if (checkCardToBattle(b8, enemies)):
+            b8[0].battle_cards8()
+
+        if (checkCardToBattle(b9, enemies)):
+            b9[0].battle_cards9()
 
     jump arena9
 
@@ -1028,15 +1007,15 @@ screen deck_choose:
 screen cards_table:
 
     python:
-        setBackground(b1, 350, 70, "")
-        setBackground(b2, 510, 70, "")
-        setBackground(b3, 670, 70, "")
-        setBackground(b4, 350, 290, "")
-        setBackground(b5, 510, 290, "")
-        setBackground(b6, 670, 290, "")
-        setBackground(b7, 350, 520, "")
-        setBackground(b8, 510, 520, "")
-        setBackground(b9, 670, 520, "")
+        setBackground(b1, 350, 70, 0)
+        setBackground(b2, 510, 70, 0)
+        setBackground(b3, 670, 70, 0)
+        setBackground(b4, 350, 290, 0)
+        setBackground(b5, 510, 290, 0)
+        setBackground(b6, 670, 290, 0)
+        setBackground(b7, 350, 520, 0)
+        setBackground(b8, 510, 520, 0)
+        setBackground(b9, 670, 520, 0)
 
 screen points:
     text "Player \n [pp]":
