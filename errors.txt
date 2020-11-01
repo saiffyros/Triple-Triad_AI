@@ -2,9 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/cardgame.rpy", line 772: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
-    if test == 1:
-    ^
+File "game/cardgame.rpy", line 1007: indentation mismatch.
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Fri Oct 30 00:32:37 2020
+Sun Nov 01 01:24:14 2020

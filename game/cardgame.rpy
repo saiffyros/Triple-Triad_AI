@@ -8,6 +8,7 @@ init python:
     import random
 
     def PickCardBattleAllies(list, listAllies):
+        #check equality is not necessary
         if list:
             for i in list:
                 for e in listAllies:
@@ -30,6 +31,15 @@ init python:
         if list:
             if list[0] == listEnemies[0]:
                 return True
+
+    def setBackgroundEnemy(list, posx, posy, returnAction):
+
+        if list:
+            card = list[0]
+            if card.owner == 1:
+                ui.add(card.picture, xpos = posx, ypos = posy)
+            else:
+                ui.add(card.picture2, xpos = posx, ypos = posy)
 
     def setBackground(list, posx, posy, returnAction):
 
@@ -109,9 +119,9 @@ init python:
                         return
 
                 number += 1
-
-                if number == 9:
-                    return
+                # 
+                # if number == 9:
+                #     return
 
         def battle_cards1(self):
             global neighbours
@@ -632,13 +642,14 @@ label cardgamei:
 
 label cardgamei2:
 
+
     $ initiative = 0
 
     show screen points
     show screen cards_table
 
     show arena
-
+    show screen telaMonitor
     $ initiative = random.randint(1, 2)
 
     if initiative == 1:
@@ -928,15 +939,15 @@ screen deck_choose:
 screen cards_table:
 
     python:
-        setBackground(b1, 350, 70, 0)
-        setBackground(b2, 510, 70, 0)
-        setBackground(b3, 670, 70, 0)
-        setBackground(b4, 350, 290, 0)
-        setBackground(b5, 510, 290, 0)
-        setBackground(b6, 670, 290, 0)
-        setBackground(b7, 350, 520, 0)
-        setBackground(b8, 510, 520, 0)
-        setBackground(b9, 670, 520, 0)
+        setBackgroundEnemy(b1, 350, 70, 0)
+        setBackgroundEnemy(b2, 510, 70, 0)
+        setBackgroundEnemy(b3, 670, 70, 0)
+        setBackgroundEnemy(b4, 350, 290, 0)
+        setBackgroundEnemy(b5, 510, 290, 0)
+        setBackgroundEnemy(b6, 670, 290, 0)
+        setBackgroundEnemy(b7, 350, 520, 0)
+        setBackgroundEnemy(b8, 510, 520, 0)
+        setBackgroundEnemy(b9, 670, 520, 0)
 
 screen points:
     text "Player \n [pp]":
@@ -970,12 +981,27 @@ screen arena:
             textbutton _("Return") action Hide("arena"), RemoveFromSet(allies, i), Jump("arena") xpadding 20 ypadding 30
 
     python:
-        setBackground(b1, 350, 70, 1)
-        setBackground(b2, 510, 70, 2)
-        setBackground(b3, 670, 70, 3)
-        setBackground(b4, 350, 290, 4)
-        setBackground(b5, 510, 290, 5)
-        setBackground(b6, 670, 290, 6)
-        setBackground(b7, 350, 520, 7)
-        setBackground(b8, 510, 520, 8)
-        setBackground(b9, 670, 520, 9)
+        if allies:
+            setBackground(b1, 350, 70, 1)
+            setBackground(b2, 510, 70, 2)
+            setBackground(b3, 670, 70, 3)
+            setBackground(b4, 350, 290, 4)
+            setBackground(b5, 510, 290, 5)
+            setBackground(b6, 670, 290, 6)
+            setBackground(b7, 350, 520, 7)
+            setBackground(b8, 510, 520, 8)
+            setBackground(b9, 670, 520, 9)
+
+screen telaMonitor:
+    python:
+        if allies:
+            ui.text(allies[0].name, xalign = 0.1, yalign = 0.25)
+        if enemies:
+            ui.text(enemies[0].name, xalign = 0.1, yalign = 0.35)
+        x = 0
+        if neighbours:
+            for i in neighbours:
+                ui.text(i.name, xalign = 0.1, yalign = 0.45 + x)
+                x += 0.05
+
+    timer 0.1 action renpy.restart_interaction

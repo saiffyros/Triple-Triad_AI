@@ -3,30 +3,70 @@
 While running game code:
   File "game/script.rpy", line 17, in script call
     call cardgame1 from _call_cardgame1
-  File "game/cardgame.rpy", line 667, in script
+  File "game/cardgame.rpy", line 690, in script
+    pause 0.7
+  File "renpy/common/000statements.rpy", line 414, in execute_pause
+    renpy.with_statement(Pause(delay))
+  File "game/cardgame.rpy", line 995, in execute
+    screen telaMonitor:
+  File "game/cardgame.rpy", line 995, in execute
+    screen telaMonitor:
+  File "game/cardgame.rpy", line 996, in execute
     python:
-  File "game/cardgame.rpy", line 670, in <module>
-    board[x - 1].append(allies[0])
-IndexError: list index out of range
+  File "game/cardgame.rpy", line 1004, in <module>
+    ui.text([i].name, xalign = 0.1, yalign = 0.65 + x)
+AttributeError: 'RevertableList' object has no attribute 'name'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "game/script.rpy", line 17, in script call
     call cardgame1 from _call_cardgame1
-  File "game/cardgame.rpy", line 667, in script
+  File "game/cardgame.rpy", line 690, in script
+    pause 0.7
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\ast.py", line 1949, in execute
+    self.call("execute")
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\ast.py", line 1937, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\statements.py", line 277, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 414, in execute_pause
+    renpy.with_statement(Pause(delay))
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\exports.py", line 1601, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\core.py", line 2251, in do_with
+    clear=clear)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\core.py", line 2702, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\screen.py", line 430, in visit_all
+    callback(self)
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\screen.py", line 440, in per_interact
+    self.update()
+  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\display\screen.py", line 625, in update
+    self.screen.function(**self.scope)
+  File "game/cardgame.rpy", line 995, in execute
+    screen telaMonitor:
+  File "game/cardgame.rpy", line 995, in execute
+    screen telaMonitor:
+  File "game/cardgame.rpy", line 996, in execute
     python:
-  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/cardgame.rpy", line 670, in <module>
-    board[x - 1].append(allies[0])
-  File "E:\Downloads 2\renpy-7.3.5-sdk\renpy\python.py", line 847, in __getitem__
-    rv = list.__getitem__(self, index)
-IndexError: list index out of range
+  File "game/cardgame.rpy", line 1004, in <module>
+    ui.text([i].name, xalign = 0.1, yalign = 0.65 + x)
+AttributeError: 'RevertableList' object has no attribute 'name'
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Triple Triad 1.0
-Sat Oct 31 20:30:54 2020
+Sun Nov 01 01:30:09 2020
