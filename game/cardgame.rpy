@@ -4,7 +4,7 @@ init python:
     neighbours = []
     pp = 0
     mp = 0
-
+    #test
     import random
 
     def PickCardBattleAllies(list, listAllies):
