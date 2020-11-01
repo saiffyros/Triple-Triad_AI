@@ -119,9 +119,36 @@ init python:
                         return
 
                 number += 1
-                # 
+                #
                 # if number == 9:
                 #     return
+        def battleCard_right_to_left(self):
+            for i in neighbours:
+                if i is not None and i.owner != self.owner:
+                    if self.get_right() > i.get_left():
+                        print("Owner: " + self.name + " " + "Compared to: " + i.name)
+                        i.change_owner()
+
+        def battleCard_left_to_right(self):
+            for i in neighbours:
+                if i is not None and i.owner != self.owner:
+                    if self.get_left() > i.get_right():
+                        print("Owner: " + self.name + " " + "Compared to: " + i.name)
+                        i.change_owner()
+
+        def battleCard_bottom_to_top(self):
+            for i in neighbours:
+                if i is not None and i.owner != self.owner:
+                    if self.get_bottom() > i.get_top():
+                        print("Owner: " + self.name + " " + "Compared to: " + i.name)
+                        i.change_owner()
+
+        def battleCard_top_to_bottom(self):
+            for i in neighbours:
+                if i is not None and i.owner != self.owner:
+                    if self.get_top() > i.get_bottom():
+                        print("Owner: " + self.name + " " + "Compared to: " + i.name)
+                        i.change_owner()
 
         def battle_cards1(self):
             global neighbours
@@ -253,6 +280,7 @@ init python:
                 renpy.play("flipping.mp3")
 
         def pick_neighbours(self):
+
             if self.position == 1:
                 if b2:
                     neighbours.append(b2[0])
@@ -705,7 +733,12 @@ label arena4:
     python:
 
         if (PickCardBattleAllies(b1, allies)):
-            b1[0].battle_cards1()
+            if neighbours:
+                for i in neighbours:
+                    if i.position == 2:
+                        b1[0].battleCard_right_to_left()
+                    if i.position == 4:
+                        b1[0].battleCard_bottom_to_top()
 
         if (PickCardBattleAllies(b2, allies)):
             b2[0].battle_cards2()
@@ -810,7 +843,12 @@ label arena8:
 
     python:
         if (checkCardToBattle(b1, enemies)):
-            b1[0].battle_cards1()
+            if neighbours:
+                for i in neighbours:
+                    if i.position == 2:
+                        b1[0].battleCard_right_to_left()
+                    if i.position == 4:
+                        b1[0].battleCard_bottom_to_top()
 
         if (checkCardToBattle(b2, enemies)):
             b2[0].battle_cards2()
@@ -998,6 +1036,7 @@ screen telaMonitor:
             ui.text(allies[0].name, xalign = 0.1, yalign = 0.25)
         if enemies:
             ui.text(enemies[0].name, xalign = 0.1, yalign = 0.35)
+
         x = 0
         if neighbours:
             for i in neighbours:
