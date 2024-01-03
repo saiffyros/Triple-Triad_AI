@@ -4,7 +4,6 @@ init python:
     neighbours = []
     pp = 0
     mp = 0
-    #test
     import random
 
     def PickCardBattleAllies(list, listAllies):
@@ -670,14 +669,13 @@ label cardgamei:
 
 label cardgamei2:
 
-
     $ initiative = 0
 
     show screen points
     show screen cards_table
 
-    show arena
-    show screen telaMonitor
+    show arena4
+    #show screen telaMonitor
     $ initiative = random.randint(1, 2)
 
     if initiative == 1:
@@ -690,21 +688,20 @@ label arena:
     if turn == 9:
         jump arenafinal
 
-    call screen deck
     # choose the card
-
-    #$ turn += 1
+    call screen deck
 
     if _return == "fight":
         jump arena1
 
 label arena1:
 
-    call screen arena
     # show the arena to place the card 1-9
+    call screen arena
 
     python:
-    # give the card the position, owner and get the neighbours
+        # give the card the position, owner and get the neighbours
+        # x is the return of the screen arena
         x = _return
         board[x - 1].append(allies[0])
         board[x - 1][0].owner = 1

@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/cardgame.rpy", line 1007: indentation mismatch.
+File "game/cardgame.rpy", line 677: expected 'image_name_component' not found.
+    show "arena2.png"
+         ^
 
-Ren'Py Version: Ren'Py 7.3.5.606
-Sun Nov 01 01:24:14 2020
+Ren'Py Version: Ren'Py 7.4.2.1292
+Sun Feb 28 18:39:34 2021
