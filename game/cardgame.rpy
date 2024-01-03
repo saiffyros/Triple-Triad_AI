@@ -149,122 +149,22 @@ init python:
                         print("Owner: " + self.name + " " + "Compared to: " + i.name)
                         i.change_owner()
 
-        def battle_cards1(self):
+
+        def battle_cards(self):
             global neighbours
             for i in neighbours:
                 if i is not None and i.owner != self.owner:
-                    if i.position == 2:
-                        if self.get_right() > i.get_left():
+                    position_diff = self.position - i.position
+                    if position_diff in [-1, 1, -3, 3]:  # Valid adjacent positions
+                        if position_diff == 1 and self.get_left() > i.get_right():
                             i.change_owner()
-                    if i.position == 4:
-                        if self.get_bottom() > i.get_top():
+                        elif position_diff == -1 and self.get_right() > i.get_left():
+                            i.change_owner()
+                        elif position_diff == 3 and self.get_top() > i.get_bottom():
+                            i.change_owner()
+                        elif position_diff == -3 and self.get_bottom() > i.get_top():
                             i.change_owner()
 
-        def battle_cards2(self):
-            global neighbours
-            for i in neighbours:
-                if i is not None and i.owner != self.owner:
-                    if i.position == 1:
-                        if self.get_left() > i.get_right():
-                            i.change_owner()
-                    if i.position == 3:
-                        if self.get_right() > i.get_left():
-                            i.change_owner()
-                    if i.position == 5:
-                        if self.get_bottom() > i.get_top():
-                            i.change_owner()
-
-        def battle_cards3(self):
-            global neighbours
-            for i in neighbours:
-                if i is not None and i.owner != self.owner:
-                    if i.position == 2:
-                        if self.get_left() > i.get_right():
-                            i.change_owner()
-                    if i.position == 6:
-                        if self.get_bottom() > i.get_top():
-                            i.change_owner()
-
-        def battle_cards4(self):
-            global neighbours
-            for i in neighbours:
-                if i is not None and i.owner != self.owner:
-                    if i.position == 1:
-                        if self.get_top() > i.get_bottom():
-                            i.change_owner()
-                    if i.position == 5:
-                        if self.get_right() > i.get_left():
-                            i.change_owner()
-                    if i.position == 7:
-                        if self.get_bottom() > i.get_top():
-                            i.change_owner()
-
-        def battle_cards5(self):
-            global neighbours
-            for i in neighbours:
-                if i is not None and i.owner != self.owner:
-                    if i.position == 2:
-                        if self.get_top() > i.get_bottom():
-                            i.change_owner()
-                    if i.position == 4:
-                        if self.get_left() > i.get_right():
-                            i.change_owner()
-                    if i.position == 6:
-                        if self.get_right() > i.get_left():
-                            i.change_owner()
-                    if i.position == 8:
-                        if self.get_bottom() > i.get_top():
-                            i.change_owner()
-
-        def battle_cards6(self):
-            global neighbours
-            for i in neighbours:
-                if i is not None and i.owner != self.owner:
-                    if i.position == 3:
-                        if self.get_top() > i.get_bottom():
-                            i.change_owner()
-                    if i.position == 5:
-                        if self.get_left() > i.get_right():
-                            i.change_owner()
-                    if i.position == 9:
-                        if self.get_bottom() > i.get_top():
-                            i.change_owner()
-
-        def battle_cards7(self):
-            global neighbours
-            for i in neighbours:
-                if i is not None and i.owner != self.owner:
-                    if i.position == 4:
-                        if self.get_top() > i.get_bottom():
-                            i.change_owner()
-                    if i.position == 8:
-                        if self.get_right() > i.get_left():
-                            i.change_owner()
-
-        def battle_cards8(self):
-            global neighbours
-            for i in neighbours:
-                if i is not None and i.owner != self.owner:
-                    if i.position == 5:
-                        if self.get_top() > i.get_bottom():
-                            i.change_owner()
-                    if i.position == 7:
-                        if self.get_left() > i.get_right():
-                            i.change_owner()
-                    if i.position == 9:
-                        if self.get_right() > i.get_left():
-                            i.change_owner()
-
-        def battle_cards9(self):
-            global neighbours
-            for i in neighbours:
-                if i is not None and i.owner != self.owner:
-                    if i.position == 6:
-                        if self.get_top() > i.get_bottom():
-                            i.change_owner()
-                    if i.position == 8:
-                        if self.get_left() > i.get_right():
-                            i.change_owner()
 
         def change_owner(self):
             global mp
@@ -279,72 +179,22 @@ init python:
                 renpy.play("flipping.mp3")
 
         def pick_neighbours(self):
+            neighbors_mapping = {
+                1: [b2, b4],
+                2: [b1, b3, b5],
+                3: [b2, b6],
+                4: [b1, b5, b7],
+                5: [b2, b4, b6, b8],
+                6: [b3, b5, b9],
+                7: [b4, b8],
+                8: [b5, b7, b9],
+                9: [b6, b8]
+            }
 
-            if self.position == 1:
-                if b2:
-                    neighbours.append(b2[0])
-                if b4:
-                    neighbours.append(b4[0])
-
-            if self.position == 2:
-                if b1:
-                    neighbours.append(b1[0])
-                if b3:
-                    neighbours.append(b3[0])
-                if b5:
-                    neighbours.append(b5[0])
-
-            if self.position == 3:
-                if b2:
-                    neighbours.append(b2[0])
-                if b6:
-                    neighbours.append(b6[0])
-
-            if self.position == 4:
-                if b1:
-                    neighbours.append(b1[0])
-                if b5:
-                    neighbours.append(b5[0])
-                if b7:
-                    neighbours.append(b7[0])
-
-            if self.position == 5:
-                if b2:
-                    neighbours.append(b2[0])
-                if b4:
-                    neighbours.append(b4[0])
-                if b6:
-                    neighbours.append(b6[0])
-                if b8:
-                    neighbours.append(b8[0])
-
-            if self.position == 6:
-                if b3:
-                    neighbours.append(b3[0])
-                if b5:
-                    neighbours.append(b5[0])
-                if b9:
-                    neighbours.append(b9[0])
-
-            if self.position == 7:
-                if b4:
-                    neighbours.append(b4[0])
-                if b8:
-                    neighbours.append(b8[0])
-
-            if self.position == 8:
-                if b5:
-                    neighbours.append(b5[0])
-                if b7:
-                    neighbours.append(b7[0])
-                if b9:
-                    neighbours.append(b9[0])
-
-            if self.position == 9:
-                if b6:
-                    neighbours.append(b6[0])
-                if b8:
-                    neighbours.append(b8[0])
+            #neighbours.append([neighbor[0] for neighbor in neighbors_mapping[self.position] if neighbor])
+            for neighbor in neighbors_mapping[self.position]:
+                if neighbor:
+                    neighbours.append(neighbor[0])
 
             return neighbours
 
@@ -613,7 +463,7 @@ init python:
     bowler2 = card("bowler","img14.png", "img14a.png", 1,8,7,7, 0, 0)
     minions = card("minions","img15.png", "img15a.png", 4,2,4,3, 0, 0)
     minions2 = card("minions","img15.png", "img15a.png", 4,2,4,3, 0, 0)
-    lava_hound = card("lava_hound","im16.png", "img16a.png", 10,8,4,4, 0, 0)
+    lava_hound = card("lava_hound","img16.png", "img16a.png", 10,8,4,4, 0, 0)
     lava_hound2 = card("lava_hound","img16.png", "img16a.png", 10,8,4,4, 0, 0)
     prince = card("prince","img17.png", "img17a.png", 2,6,3,6, 0, 0)
     prince2 = card("prince","img17.png", "img17a.png", 2,6,3,6, 0, 0)
@@ -643,7 +493,8 @@ label cardgame1:
     $ victory = None
     $ defeat = None
     $ draw = None
-    default deck_real = [hog_rider, archers, princess, mosquetear, barbarians, valkyrie, night_witch2]
+    #default deck_real = [hog_rider, archers, princess, mosquetear, barbarians, valkyrie, night_witch]
+    default deck_real = [hog_rider, archers, princess, mosquetear, barbarians, valkyrie]
     default deck_cards = []
     $ number = 0
 
@@ -738,28 +589,28 @@ label arena4:
                         b1[0].battleCard_bottom_to_top()
 
         if (PickCardBattleAllies(b2, allies)):
-            b2[0].battle_cards2()
+            b2[0].battle_cards()
 
         if (PickCardBattleAllies(b3, allies)):
-            b3[0].battle_cards3()
+            b3[0].battle_cards()
 
         if (PickCardBattleAllies(b4, allies)):
-            b4[0].battle_cards4()
+            b4[0].battle_cards()
 
         if (PickCardBattleAllies(b5, allies)):
-            b5[0].battle_cards5()
+            b5[0].battle_cards()
 
         if (PickCardBattleAllies(b6, allies)):
-            b6[0].battle_cards6()
+            b6[0].battle_cards()
 
         if (PickCardBattleAllies(b7, allies)):
-            b7[0].battle_cards7()
+            b7[0].battle_cards()
 
         if (PickCardBattleAllies(b8, allies)):
-            b8[0].battle_cards8()
+            b8[0].battle_cards()
 
         if (PickCardBattleAllies(b9, allies)):
-            b9[0].battle_cards9()
+            b9[0].battle_cards()
 
     jump arena5
 
@@ -848,28 +699,28 @@ label arena8:
                         b1[0].battleCard_bottom_to_top()
 
         if (checkCardToBattle(b2, enemies)):
-            b2[0].battle_cards2()
+            b2[0].battle_cards()
 
         if (checkCardToBattle(b3, enemies)):
-            b3[0].battle_cards3()
+            b3[0].battle_cards()
 
         if (checkCardToBattle(b4, enemies)):
-            b4[0].battle_cards4()
+            b4[0].battle_cards()
 
         if (checkCardToBattle(b5, enemies)):
-            b5[0].battle_cards5()
+            b5[0].battle_cards()
 
         if (checkCardToBattle(b6, enemies)):
-            b6[0].battle_cards6()
+            b6[0].battle_cards()
 
         if (checkCardToBattle(b7, enemies)):
-            b7[0].battle_cards7()
+            b7[0].battle_cards()
 
         if (checkCardToBattle(b8, enemies)):
-            b8[0].battle_cards8()
+            b8[0].battle_cards()
 
         if (checkCardToBattle(b9, enemies)):
-            b9[0].battle_cards9()
+            b9[0].battle_cards()
 
     jump arena9
 
@@ -986,20 +837,20 @@ screen cards_table:
 
 screen points:
     text "Player \n [pp]":
-          size 27
-          xalign 0.1
-          yalign 0.8
+        size 27
+        xalign 0.1
+        yalign 0.8
 
     text "Enemy \n [mp]":
-          size 27
-          xalign 0.1
-          yalign 0.7
+        size 27
+        xalign 0.1
+        yalign 0.7
 
     vbox:
         xalign 0.1
         yalign 0.95
         frame:
-             textbutton _("Give Up") action Jump("arenafinal3") xpadding 20 ypadding 20
+            textbutton _("Give Up") action Jump("arenafinal3") xpadding 20 ypadding 20
 
 screen arena:
 
